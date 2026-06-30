@@ -74,52 +74,9 @@ main{max-width:1200px;margin:28px auto 64px;padding:0 24px}
 .card:hover{box-shadow:0 8px 28px rgba(200,118,42,0.14);transform:translateY(-3px);border-color:var(--caramel-light)}
 
 /* CARD IMAGE */
-.card-img {
-  width:100%;
-  aspect-ratio:4/3;
-  background:var(--cream);
-  position:relative;
-  overflow:hidden;
-  border-bottom:1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-img span {
-  position:absolute;
-  font-size:48px;
-  z-index:1;
-  opacity:0.15;
-  transition:opacity .3s;
-}
-
-.card-img a {
-  display:block;
-  width:100%;
-  height:100%;
-  position: relative;
-}
-
-.card-img img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:none;
-  transition:transform 0.4s ease;
-}
-
-.card-img img.loaded {
-  display:block;
-}
-
-.card-img:hover img {
-  transform:scale(1.08);
-}
-
-.card-img:hover span {
-  opacity:0.25;
-}
+.card-img{width:100%;aspect-ratio:4/3;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:38px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.card-img img{width:100%;height:100%;object-fit:cover;display:none;position:absolute;inset:0}
+.card-img img.loaded{display:block}
 
 /* CARD BODY */
 .card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
@@ -199,106 +156,172 @@ footer a:hover{color:var(--caramel-light)}
 </footer>
 
 <script>
-const catalog = [
-  {
-    cat: 'sweet',
-    title: '🥐 Сладкая выпечка',
-    items: [
-      { name: 'Круассан классический', img: 'croissant.jpg', price: 120, unit: 'шт.' },
-      { name: 'Ватрушка с нежным творогом', img: 'vatrushka.jpg', price: 85, unit: 'шт.' },
-      { name: 'Булочка с корицей и глазурью', img: 'cinnabon.jpg', price: 140, unit: 'шт.' }
-    ]
-  },
-  {
-    cat: 'savory',
-    title: '🫓 Сытная выпечка',
-    items: [
-      { name: 'Пирожок с мясом запеченный', img: 'pie-meat.jpg', price: 95, unit: 'шт.' },
-      { name: 'Слойка с ветчиной и сыром', img: 'puff-cheese.jpg', price: 110, unit: 'шт.' },
-      { name: 'Хачапури по-аджарски', img: 'hachapuri.jpg', price: 250, unit: 'шт.' }
-    ]
-  },
-  {
-    cat: 'pastry',
-    title: '🍰 Пирожные',
-    items: [
-      { name: 'Эклер шоколадный', img: 'eclair.jpg', price: 130, unit: 'шт.' },
-      { name: 'Медовик домашний (кусочек)', img: 'medovik.jpg', price: 180, unit: '150г' },
-      { name: 'Пирожное Картошка', img: 'kartoshka.jpg', price: 90, unit: 'шт.' }
-    ]
-  },
-  {
-    cat: 'food',
-    title: '🍽️ Кулинария',
-    items: [
-      { name: 'Котлеты домашние из свинины и говядины', img: 'cutlets.jpg', price: 160, unit: '100г' },
-      { name: 'Запеканка картофельная с фаршем', img: 'casserole.jpg', price: 140, unit: '100г' }
-    ]
-  },
-  {
-    cat: 'salad',
-    title: '🥗 Салаты',
-    items: [
-      { name: 'Салат Оливье с колбасой', img: 'olivier.jpg', price: 90, unit: '100г' },
-      { name: 'Салат Цезарь с курицей', img: 'caesar.jpg', price: 150, unit: '100г' }
-    ]
-  },
-  {
-    cat: 'fried',
-    title: '🔥 Жареные',
-    items: [
-      { name: 'Чебурек с мясом сочный', img: 'cheburek.jpg', price: 100, unit: 'шт.' },
-      { name: 'Пирожок жареный с картошкой', img: 'fried-potato.jpg', price: 65, unit: 'шт.' }
-    ]
-  },
-  {
-    cat: 'drinks',
-    title: '🫙 Напитки',
-    items: [
-      { name: 'Компот из сухофруктов', img: 'kompot.jpg', price: 80, unit: '0.5л' },
-      { name: 'Морс клюквенный домашний', img: 'mors.jpg', price: 95, unit: '0.5л' }
-    ]
-  }
+const catalog=[
+  {cat:'sweet',title:'🥐 Сладкая выпечка',items:[
+    {name:'Трубочка со сгущенкой, 10шт в упак',price:700,unit:'упак',img:'sweet-1.jpg'},
+    {name:'Орешек со сгущенкой, 12шт в упак',price:360,unit:'упак',img:'sweet-2.jpg'},
+    {name:'Кекс творожный, 400гр',price:160,unit:'шт',img:'sweet-3.jpg'},
+    {name:'Кекс творожный, 60гр',price:29,unit:'шт',img:'sweet-4.jpg'},
+    {name:'Корзинка ягодная',price:65,unit:'шт',img:'sweet-5.jpg'},
+    {name:'Сочень с творогом',price:55,unit:'шт',img:'sweet-6.jpg'},
+    {name:'Рогалик песочный с вишней',price:65,unit:'шт',img:'sweet-7.jpg'},
+    {name:'Круассан с варёной сгущенкой',price:53,unit:'шт',img:'sweet-8.jpg'},
+    {name:'Круассан с вишневой начинкой',price:53,unit:'шт',img:'sweet-9.jpg'},
+    {name:'Круассан с клубничной начинкой',price:53,unit:'шт',img:'sweet-10.jpg'},
+    {name:'Круассан с шоколадом',price:53,unit:'шт',img:'sweet-11.jpg'},
+    {name:'Штрудель вишня-яблоко',price:190,unit:'шт',img:'sweet-12.jpg'},
+    {name:'Мини штрудель вишня-яблоко',price:84,unit:'шт',img:'sweet-13.jpg'},
+    {name:'Улитка слоёная с изюмом',price:50,unit:'шт',img:'sweet-14.jpg'},
+    {name:'Дениш с вишней',price:43,unit:'шт',img:'sweet-15.jpg'},
+    {name:'Дениш с клубникой',price:43,unit:'шт',img:'sweet-16.jpg'},
+    {name:'Круассан с шоколадом большой',price:110,unit:'шт',img:'sweet-17.jpg'},
+    {name:'Круассан миндальный большой',price:100,unit:'шт',img:'sweet-18.jpg'},
+    {name:'Пирожок с яблоком',price:42,unit:'шт',img:'sweet-19.jpg'},
+    {name:'Пирожок с черной смородиной',price:42,unit:'шт',img:'sweet-20.jpg'},
+    {name:'Пирожок с вишней',price:42,unit:'шт',img:'sweet-21.jpg'},
+    {name:'Булочка маковая',price:40,unit:'шт',img:'sweet-22.jpg'},
+    {name:'Плюшка с сахаром',price:34,unit:'шт',img:'sweet-23.jpg'},
+  ]},
+  {cat:'savory',title:'🫓 Сытная выпечка',items:[
+    {name:'Слойка с сосиской',price:45,unit:'шт',img:'savory-1.jpg'},
+    {name:'Слойка с адыгейским сыром',price:57,unit:'шт',img:'savory-2.jpg'},
+    {name:'Слойка с ветчиной и сыром',price:57,unit:'шт',img:'savory-3.jpg'},
+    {name:'Слойка с капустой',price:50,unit:'шт',img:'savory-4.jpg'},
+    {name:'Слойка с курицей и сыром',price:58,unit:'шт',img:'savory-5.jpg'},
+    {name:'Слойка с мясом',price:50,unit:'шт',img:'savory-6.jpg'},
+    {name:'Слойка с картофелем',price:32,unit:'шт',img:'savory-7.jpg'},
+    {name:'Багет с ветчиной и сыром',price:63,unit:'шт',img:'savory-8.jpg'},
+    {name:'Пицца студенческая с курицей и грибами',price:95,unit:'шт',img:'savory-9.jpg'},
+    {name:'Пицца студенческая с ветчиной и сыром',price:95,unit:'шт',img:'savory-10.jpg'},
+    {name:'Пицца студенческая пепперони',price:115,unit:'шт',img:'savory-11.jpg'},
+    {name:'Курник',price:95,unit:'шт',img:'savory-12.jpg'},
+    {name:'Миникурник',price:63,unit:'шт',img:'savory-13.jpg'},
+    {name:'Конверт с курицей',price:75,unit:'шт',img:'savory-14.jpg'},
+    {name:'Чизбургер',price:72,unit:'шт',img:'savory-15.jpg'},
+    {name:'Круассан с ветчиной и сыром',price:135,unit:'шт',img:'savory-16.jpg'},
+    {name:'Круассан «Цезарь» с курицей',price:145,unit:'шт',img:'savory-17.jpg'},
+    {name:'Круассан с сёмгой',price:265,unit:'шт',img:'savory-18.jpg'},
+    {name:'Чиабатта с ветчиной и сыром',price:135,unit:'шт',img:'savory-19.jpg'},
+  ]},
+  {cat:'pastry',title:'🍰 Пирожные',items:[
+    {name:'Красный бархат',price:135,unit:'шт',img:'pastry-1.jpg'},
+    {name:'Макаронс (шоколад, малина, ваниль)',price:75,unit:'шт',img:'pastry-2.jpg'},
+    {name:'Молочная девочка',price:105,unit:'шт',img:'pastry-3.jpg'},
+    {name:'Наполеон',price:125,unit:'шт',img:'pastry-4.jpg'},
+    {name:'Рыжик',price:105,unit:'шт',img:'pastry-5.jpg'},
+    {name:'Панчо',price:100,unit:'шт',img:'pastry-6.jpg'},
+    {name:'Картошка',price:70,unit:'шт',img:'pastry-7.jpg'},
+    {name:'Эклер с заварным кремом',price:70,unit:'шт',img:'pastry-8.jpg'},
+    {name:'Птичье молоко',price:170,unit:'шт',img:'pastry-9.jpg'},
+    {name:'Меренговый рулет',price:135,unit:'шт',img:'pastry-10.jpg'},
+    {name:'Эклер с фисташковым кремом',price:85,unit:'шт',img:'pastry-11.jpg'},
+    {name:'Чиз-Кейк',price:150,unit:'шт',img:'pastry-12.jpg'},
+  ]},
+  {cat:'food',title:'🍽️ Кулинария',items:[
+    {name:'Окрошка',price:150,unit:'шт',img:'food-1.jpg'},
+    {name:'Пюре с котлетой по-домашнему',price:210,unit:'шт',img:'food-2.jpg'},
+    {name:'Пюре с пангасиусом',price:210,unit:'шт',img:'food-3.jpg'},
+    {name:'Сырники со сметаной',price:150,unit:'шт',img:'food-4.jpg'},
+    {name:'Блинчики с курицей и грибами',price:160,unit:'шт',img:'food-5.jpg'},
+    {name:'Блинчики с творогом',price:160,unit:'шт',img:'food-6.jpg'},
+  ]},
+  {cat:'salad',title:'🥗 Салаты',items:[
+    {name:'Боул «Греческий», 240гр',price:190,unit:'шт',img:'salad-1.jpg'},
+    {name:'Боул с креветкой',price:210,unit:'шт',img:'salad-2.jpg'},
+    {name:'Боул с киноа и курицей',price:205,unit:'шт',img:'salad-3.jpg'},
+    {name:'Боул «Цезарь с курицей», 240гр',price:185,unit:'шт',img:'salad-4.jpg'},
+  ]},
+  {cat:'fried',title:'🔥 Жареные изделия',items:[
+    {name:'Беляш',price:52,unit:'шт',img:'fried-1.jpg'},
+    {name:'Пирожок жар. с капустой',price:36,unit:'шт',img:'fried-2.jpg'},
+    {name:'Пирожок жар. с картошкой',price:36,unit:'шт',img:'fried-3.jpg'},
+    {name:'Пирожок жар. яйцо/лук',price:36,unit:'шт',img:'fried-4.jpg'},
+    {name:'Пирожок жар. картошка/грибы',price:39,unit:'шт',img:'fried-5.jpg'},
+    {name:'Пирожок жар. картошка/печень',price:39,unit:'шт',img:'fried-6.jpg'},
+  ]},
+  {cat:'drinks',title:'🫙 Напитки (концентраты, бут. 1 кг)',items:[
+    {name:'Апельсин-имбирь',price:588,unit:'шт',img:'drinks-1.jpg'},
+    {name:'Клюква-имбирь',price:636,unit:'шт',img:'drinks-2.jpg'},
+    {name:'Лайм с имбирём и мятой',price:588,unit:'шт',img:'drinks-3.jpg'},
+    {name:'Лимон-имбирь',price:588,unit:'шт',img:'drinks-4.jpg'},
+    {name:'Малина-имбирь',price:588,unit:'шт',img:'drinks-5.jpg'},
+    {name:'Облепиха-имбирь',price:588,unit:'шт',img:'drinks-6.jpg'},
+    {name:'Глинтвейн безалкогольный',price:672,unit:'шт',img:'drinks-7.jpg'},
+    {name:'Глинтвейн грейпфрутовый',price:672,unit:'шт',img:'drinks-8.jpg'},
+    {name:'Глинтвейн малиновый',price:720,unit:'шт',img:'drinks-9.jpg'},
+    {name:'Глинтвейн вишнёвый',price:744,unit:'шт',img:'drinks-10.jpg'},
+    {name:'Сбитень безалкогольный',price:612,unit:'шт',img:'drinks-11.jpg'},
+    {name:'ГРОГ безалкогольный',price:636,unit:'шт',img:'drinks-12.jpg'},
+    {name:'Пунш Клюква-Апельсин',price:564,unit:'шт',img:'drinks-13.jpg'},
+    {name:'Пунш с чабрецом',price:564,unit:'шт',img:'drinks-14.jpg'},
+    {name:'Морс клюквенный',price:588,unit:'шт',img:'drinks-15.jpg'},
+    {name:'Морс из брусники',price:588,unit:'шт',img:'drinks-16.jpg'},
+    {name:'Морс малиновый',price:588,unit:'шт',img:'drinks-17.jpg'},
+    {name:'Морс из облепихи',price:552,unit:'шт',img:'drinks-18.jpg'},
+    {name:'Морс из черной смородины',price:576,unit:'шт',img:'drinks-19.jpg'},
+    {name:'Морс вишнёвый',price:600,unit:'шт',img:'drinks-20.jpg'},
+    {name:'Морс фруктово-ягодный',price:552,unit:'шт',img:'drinks-21.jpg'},
+    {name:'Апельсиновый',price:660,unit:'шт',img:'drinks-22.jpg'},
+    {name:'Гранатовый',price:696,unit:'шт',img:'drinks-23.jpg'},
+    {name:'Тропический',price:660,unit:'шт',img:'drinks-24.jpg'},
+    {name:'Яблочный',price:528,unit:'шт',img:'drinks-25.jpg'},
+    {name:'Ананас-апельсин-лимон',price:600,unit:'шт',img:'drinks-26.jpg'},
+    {name:'Ананас-манго',price:600,unit:'шт',img:'drinks-27.jpg'},
+    {name:'Вишня-лемонграсс',price:672,unit:'шт',img:'drinks-28.jpg'},
+    {name:'Грейпфрут-апельсин',price:672,unit:'шт',img:'drinks-29.jpg'},
+    {name:'Груша-лемонграсс',price:600,unit:'шт',img:'drinks-30.jpg'},
+    {name:'Клубника-базилик',price:600,unit:'шт',img:'drinks-31.jpg'},
+    {name:'Клубника-лимон',price:540,unit:'шт',img:'drinks-32.jpg'},
+    {name:'Клубника-мята',price:600,unit:'шт',img:'drinks-33.jpg'},
+    {name:'Малина-базилик',price:600,unit:'шт',img:'drinks-34.jpg'},
+    {name:'Малина-ежевика',price:600,unit:'шт',img:'drinks-35.jpg'},
+    {name:'Малина-мята',price:600,unit:'шт',img:'drinks-36.jpg'},
+    {name:'Малина-шиповник',price:600,unit:'шт',img:'drinks-37.jpg'},
+    {name:'Манго-клубника',price:600,unit:'шт',img:'drinks-38.jpg'},
+    {name:'Мохито безалкогольный',price:504,unit:'шт',img:'drinks-39.jpg'},
+    {name:'Мохито клубничный',price:564,unit:'шт',img:'drinks-40.jpg'},
+    {name:'Облепиха-апельсин',price:600,unit:'шт',img:'drinks-41.jpg'},
+    {name:'Сангрия',price:576,unit:'шт',img:'drinks-42.jpg'},
+    {name:'Черничный',price:600,unit:'шт',img:'drinks-43.jpg'},
+    {name:'Яблоко-липа-мята',price:564,unit:'шт',img:'drinks-44.jpg'},
+    {name:'Яблоко-ромашка-лемонграсс',price:564,unit:'шт',img:'drinks-45.jpg'},
+    {name:'Фруктово-ягодный (канистра 6 кг)',price:492,unit:'шт',img:'drinks-46.jpg'},
+    {name:'Черника-клубника',price:564,unit:'шт',img:'drinks-47.jpg'},
+    {name:'Клюква-можжевельник',price:600,unit:'шт',img:'drinks-48.jpg'},
+    {name:'Персиковый',price:588,unit:'шт',img:'drinks-49.jpg'},
+    {name:'Яблоко-барбарис',price:564,unit:'шт',img:'drinks-50.jpg'},
+    {name:'Манго-маракуйя',price:660,unit:'шт',img:'drinks-51.jpg'},
+    {name:'Киви-ананас',price:564,unit:'шт',img:'drinks-52.jpg'},
+  ]}
 ];
 
-const catEmoji = {sweet:'🥐',savory:'🫓',pastry:'🍰',food:'🍽️',salad:'🥗',fried:'🔥',drinks:'🫙'};
+const catEmoji={sweet:'🥐',savory:'🫓',pastry:'🍰',food:'🍽️',salad:'🥗',fried:'🔥',drinks:'🫙'};
 
-function buildCatalog(filterCat, query) {
-  const main = document.getElementById('catalog');
-  const noResults = document.getElementById('noResults');
-  main.innerHTML = '';
-  let total = 0;
-
-  catalog.forEach(section => {
-    if (filterCat !== 'all' && section.cat !== filterCat) return;
-
-    const items = section.items.filter(i => 
-      !query || i.name.toLowerCase().includes(query.toLowerCase())
-    );
-
-    if (!items.length) return;
-
-    total += items.length;
-
-    const h = document.createElement('h2');
-    h.className = 'section-title';
-    const [ico, ...rest] = section.title.split(' ');
-    h.innerHTML = `<span class="icon">${ico}</span>${rest.join(' ')}`;
+function buildCatalog(filterCat,query){
+  const main=document.getElementById('catalog');
+  const noResults=document.getElementById('noResults');
+  main.innerHTML='';
+  let total=0;
+  catalog.forEach(section=>{
+    if(filterCat!=='all'&&section.cat!==filterCat)return;
+    const items=section.items.filter(i=>!query||i.name.toLowerCase().includes(query.toLowerCase()));
+    if(!items.length)return;
+    total+=items.length;
+    const h=document.createElement('h2');
+    h.className='section-title';
+    const [ico,...rest]=section.title.split(' ');
+    h.innerHTML=`<span class="icon">${ico}</span>${rest.join(' ')}`;
     main.appendChild(h);
-
-    const grid = document.createElement('div');
-    grid.className = 'grid';
-
-    items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      
-      card.innerHTML = `
+    const grid=document.createElement('div');
+    grid.className='grid';
+    items.forEach(item=>{
+      const card=document.createElement('div');
+      card.className='card';
+      // В src подставляем путь к папке images/
+      card.innerHTML=`
         <div class="card-img">
-          <span>${catEmoji[section.cat] || '🧁'}</span>
-          <a href="images/${item.img}" target="_blank">
-            <img src="images/${item.img}" alt="${item.name}" onload="this.classList.add('loaded')">
-          </a>
+          <span>${catEmoji[section.cat]||'🧁'}</span>
+          <img src="images/${item.img}" alt="${item.name}" onload="this.classList.add('loaded')">
         </div>
         <div class="card-body">
           <div class="card-name">${item.name}</div>
@@ -310,35 +333,31 @@ function buildCatalog(filterCat, query) {
             <div class="card-badge">В наличии</div>
           </div>
         </div>`;
-      
       grid.appendChild(card);
     });
-
     main.appendChild(grid);
   });
-
-  noResults.classList.toggle('show', total === 0);
+  noResults.classList.toggle('show',total===0);
 }
 
-// === Фильтры и поиск ===
-document.getElementById('filters').addEventListener('click', e => {
-  const btn = e.target.closest('.filter-btn');
-  if (!btn) return;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+document.getElementById('filters').addEventListener('click',e=>{
+  const btn=e.target.closest('.filter-btn');
+  if(!btn)return;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  buildCatalog(btn.dataset.cat, document.getElementById('search').value);
+  buildCatalog(btn.dataset.cat,document.getElementById('search').value);
 });
 
-let timeout;
-document.getElementById('search').addEventListener('input', e => {
-  clearTimeout(timeout);
-  timeout = setTimeout(() => {
-    const activeCat = document.querySelector('.filter-btn.active').dataset.cat;
-    buildCatalog(activeCat, e.target.value);
-  }, 200);
+let t;
+document.getElementById('search').addEventListener('input',e=>{
+  clearTimeout(t);
+  t=setTimeout(()=>{
+    const cat=document.querySelector('.filter-btn.active').dataset.cat;
+    buildCatalog(cat,e.target.value);
+  },200);
 });
 
-buildCatalog('all', '');
+buildCatalog('all','');
 </script>
 </body>
 </html>
