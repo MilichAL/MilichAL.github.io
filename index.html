@@ -74,18 +74,63 @@ main{max-width:1200px;margin:28px auto 64px;padding:0 24px}
 .card:hover{box-shadow:0 8px 28px rgba(200,118,42,0.14);transform:translateY(-3px);border-color:var(--caramel-light)}
 
 /* CARD IMAGE */
-.card-img{width:100%;aspect-ratio:4/3;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:38px;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.card-img img{width:100%;height:100%;object-fit:cover;display:none;position:absolute;inset:0}
+.card-img{width:100%;aspect-ratio:4/3;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:38px;position:relative;overflow:hidden;border-bottom:1px solid var(--border);cursor:zoom-in} /* Добавили лупу при наведении */
+.card-img span{position:absolute;z-index:1;opacity:0.2}
+.card-img img{width:100%;height:100%;object-fit:cover;display:none;position:absolute;inset:0;z-index:2;transition:transform 0.3s ease}
 .card-img img.loaded{display:block}
+.card:hover .card-img img{transform:scale(1.06)}
 
 /* CARD BODY */
 .card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
 .card-name{font-size:13.5px;font-weight:500;color:var(--chocolate);line-height:1.42;margin-bottom:12px}
 .card-footer{display:flex;align-items:flex-end;justify-content:space-between}
-.price-block{}
 .card-price{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--caramel);line-height:1}
 .card-unit{font-size:11px;color:var(--muted);margin-top:3px}
 .card-badge{font-size:10.5px;font-weight:600;color:var(--sage);background:var(--sage-light);padding:4px 10px;border-radius:12px;letter-spacing:0.02em}
+
+/* СТИЛИ ДЛЯ ВСПЛЫВАЮЩЕГО ОКНА КАРТИНКИ (LIGHTBOX) */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 21, 6, 0.85); /* Шоколадный полупрозрачный фон */
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+.lightbox.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox-img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+  object-fit: contain;
+  background: var(--white);
+  border: 4px solid var(--white);
+}
+.lightbox.show .lightbox-img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  color: var(--vanilla);
+  font-size: 38px;
+  font-weight: 300;
+  cursor: pointer;
+  user-select: none;
+}
 
 /* NO RESULTS */
 .no-results{text-align:center;padding:70px 20px;color:var(--muted);display:none}
@@ -103,6 +148,7 @@ footer a:hover{color:var(--caramel-light)}
   .hero{padding:36px 16px 30px}
   .grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:11px}
   .section-title{font-size:19px}
+  .lightbox-img { max-width: 95%; max-height: 75vh; }
 }
 </style>
 </head>
@@ -110,7 +156,7 @@ footer a:hover{color:var(--caramel-light)}
 
 <header>
   <div class="header-inner">
-    <a href="#" class="logo">ИП Милич А.Л.</span></a>
+    <a href="#" class="logo">ИП Милич А.Л.</a>
     <a href="tel:89618503331" class="header-phone">8 (961) 850-33-31</a>
   </div>
 </header>
@@ -148,6 +194,11 @@ footer a:hover{color:var(--caramel-light)}
   <p style="margin-top:6px;font-size:13px">Попробуйте другой запрос</p>
 </div>
 
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-img" src="" alt="Увеличенное фото товара">
+</div>
+
 <footer>
   <strong>Булочная №2</strong><br>
   ул. Игнатова, 5 · Краснодар<br>
@@ -180,7 +231,7 @@ const catalog=[
     {name:'Пирожок с черной смородиной',price:42,unit:'шт',img:'sweet-20.jpg'},
     {name:'Пирожок с вишней',price:42,unit:'шт',img:'sweet-21.jpg'},
     {name:'Булочка маковая',price:40,unit:'шт',img:'sweet-22.jpg'},
-    {name:'Плюшка с сахаром',price:34,unit:'шт',img:'sweet-23.jpg'},
+    {name:'Плюшка с saхаром',price:34,unit:'шт',img:'sweet-23.jpg'},
   ]},
   {cat:'savory',title:'🫓 Сытная выпечка',items:[
     {name:'Слойка с сосиской',price:45,unit:'шт',img:'savory-1.jpg'},
@@ -289,7 +340,7 @@ const catalog=[
     {name:'Черника-клубника',price:564,unit:'шт',img:'drinks-47.jpg'},
     {name:'Клюква-можжевельник',price:600,unit:'шт',img:'drinks-48.jpg'},
     {name:'Персиковый',price:588,unit:'шт',img:'drinks-49.jpg'},
-    {name:'Яблоко-барбарис',price:564,unit:'шт',img:'drinks-50.jpg'},
+    {name:'Яблоко-barбарис',price:564,unit:'шт',img:'drinks-50.jpg'},
     {name:'Манго-маракуйя',price:660,unit:'шт',img:'drinks-51.jpg'},
     {name:'Киви-ананас',price:564,unit:'шт',img:'drinks-52.jpg'},
   ]}
@@ -317,9 +368,8 @@ function buildCatalog(filterCat,query){
     items.forEach(item=>{
       const card=document.createElement('div');
       card.className='card';
-      // В src подставляем путь к папке images/
       card.innerHTML=`
-        <div class="card-img">
+        <div class="card-img" data-src="images/${item.img}">
           <span>${catEmoji[section.cat]||'🧁'}</span>
           <img src="images/${item.img}" alt="${item.name}" onload="this.classList.add('loaded')">
         </div>
@@ -346,6 +396,13 @@ document.getElementById('filters').addEventListener('click',e=>{
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   buildCatalog(btn.dataset.cat,document.getElementById('search').value);
+  
+  // Плавный скролл к началу каталога при переключении категорий
+  const searchWrap = document.querySelector('.search-wrap');
+  if (searchWrap) {
+    const offset = searchWrap.getBoundingClientRect().top + window.scrollY - 130;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  }
 });
 
 let t;
@@ -355,6 +412,27 @@ document.getElementById('search').addEventListener('input',e=>{
     const cat=document.querySelector('.filter-btn.active').dataset.cat;
     buildCatalog(cat,e.target.value);
   },200);
+});
+
+// === ОТКРЫТИЕ МОДАЛЬНОГО ОКНА ДЛЯ ФОТО ===
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('.lightbox-img');
+
+document.getElementById('catalog').addEventListener('click', e => {
+  const imgBlock = e.target.closest('.card-img');
+  if (!imgBlock) return;
+  
+  const imgSrc = imgBlock.getAttribute('data-src');
+  if (imgSrc) {
+    lightboxImg.src = imgSrc;
+    lightbox.classList.add('show');
+  }
+});
+
+// Закрытие по клику в любое место экрана
+lightbox.addEventListener('click', () => {
+  lightbox.classList.remove('show');
+  setTimeout(() => { lightboxImg.src = ''; }, 300);
 });
 
 buildCatalog('all','');
