@@ -26,17 +26,17 @@
 html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:var(--vanilla);color:var(--chocolate);min-height:100vh}
 
-/* HEADER WITH LOGO UNDER PHONE */
+/* HEADER WITH LARGE LOGO UNDER PHONE */
 header{background:var(--chocolate);padding:0 24px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(45,21,6,0.22)}
-.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:74px} /* Слегка увеличили высоту шапки для вместимости логотипа */
-.logo{font-family:'Playfair Display',serif;color:var(--vanilla);font-size:21px;font-weight:700;text-decoration:none;letter-spacing:0.01em}
+.header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:104px} /* Увеличили высоту шапки под крупный логотип */
+.logo{font-family:'Playfair Display',serif;color:var(--vanilla);font-size:22px;font-weight:700;text-decoration:none;letter-spacing:0.01em}
 .logo span{color:var(--caramel)}
 
 /* Правый блок в шапке */
-.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
-.header-phone{color:var(--caramel-light);font-size:13px;font-weight:500;text-decoration:none;transition:color 0.15s;line-height:1}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.header-phone{color:var(--caramel-light);font-size:14px;font-weight:600;text-decoration:none;transition:color 0.15s;line-height:1;letter-spacing:0.02em}
 .header-phone:hover{color:var(--white)}
-.header-logo-img{height:24px;width:auto;display:block;opacity:0.95;transition:opacity 0.15s} /* Задаем аккуратную высоту знака под телефоном */
+.header-logo-img{height:54px;width:auto;display:block;opacity:0.95;transition:opacity 0.15s} /* Увеличенная высота: логотип теперь в 2 раза шире телефона */
 .header-right:hover .header-logo-img{opacity:1}
 
 /* HERO */
@@ -48,7 +48,7 @@ header{background:var(--chocolate);padding:0 24px;position:sticky;top:0;z-index:
 .hero p{color:var(--caramel-light);font-size:14px;max-width:420px;margin:0 auto;line-height:1.65;opacity:0.85}
 
 /* FILTERS */
-.filters-wrap{background:var(--white);border-bottom:1.5px solid var(--border);position:sticky;top:74px;z-index:90} /* Изменили top в соответствии с высотой шапки */
+.filters-wrap{background:var(--white);border-bottom:1.5px solid var(--border);position:sticky;top:104px;z-index:90} /* Перенесли top под новую высоту шапки */
 .filters{max-width:1200px;margin:0 auto;display:flex;gap:8px;padding:12px 24px;overflow-x:auto;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
 .filter-btn{flex-shrink:0;background:transparent;border:1.5px solid var(--border);color:var(--brown-mid);font-size:13px;font-weight:500;padding:7px 16px;border-radius:22px;cursor:pointer;transition:all 0.17s;white-space:nowrap;font-family:'Inter',sans-serif}
@@ -150,12 +150,13 @@ footer a:hover{color:var(--caramel-light)}
 .hidden{display:none!important}
 
 @media(max-width:600px){
-  .header-inner{height:76px}
-  .filters-wrap{top:76px}
+  .header-inner{height:104px}
+  .filters-wrap{top:104px}
   .hero{padding:36px 16px 30px}
   .grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:11px}
   .section-title{font-size:19px}
   .lightbox-img { max-width: 95%; max-height: 75vh; }
+  .header-logo-img{height:44px} /* На мобильных устройствах делаем чуть компактнее, чтобы не перегружать экран */
 }
 </style>
 </head>
@@ -164,7 +165,7 @@ footer a:hover{color:var(--caramel-light)}
 <header>
   <div class="header-inner">
     <a href="#" class="logo">ИП Милич А.Л.</a>
-    <!-- Правая часть: номер телефона и графический логотип строго под ним -->
+    <!-- Правая часть: номер телефона и крупный графический логотип под ним -->
     <div class="header-right">
       <a href="tel:89618503331" class="header-phone">8 (961) 850-33-31</a>
       <img src="image.jpg" alt="Логотип Милич" class="header-logo-img">
@@ -211,7 +212,7 @@ footer a:hover{color:var(--caramel-light)}
 </div>
 
 <footer>
-  <strong>Milich A.L.</strong><br>
+  <strong>Булочная №2</strong><br>
   ул. Игнатова, 5 · Краснодар<br>
   <a href="tel:89618503331">8 (961) 850-33-31</a> · Telegram<br>
   <span style="font-size:12px;opacity:0.6">Приём заявок до 12:00 предыдущего дня</span>
@@ -410,7 +411,7 @@ document.getElementById('filters').addEventListener('click',e=>{
   
   const searchWrap = document.querySelector('.search-wrap');
   if (searchWrap) {
-    const offset = searchWrap.getBoundingClientRect().top + window.scrollY - 145; /* Скорректировали отступ под новую высоту шапки */
+    const offset = searchWrap.getBoundingClientRect().top + window.scrollY - 175; /* Скорректировали скролл с запасом под новую высоту */
     window.scrollTo({ top: offset, behavior: 'smooth' });
   }
 });
